@@ -1,25 +1,59 @@
-const array = [2, 43, 67, 1, 55, 89, 65, 32];
+// let arr = [29, 10, 14, 37, 14];
+// let arr = [4, 8, 1, 3, 9];
+let arr = [ 25, 12, 22, 11, 64, 59];
+let swaps = 0;
 
-const SelectionSort = () => {
-    const n = array.length
+function selectionSort2(){
+    let n = arr.length
 
-    for (let i = 0; i < n - 1; i++){
-        let midIndex = i;
+    for (let i = 0; i < n-1; i++){
+        let minIndex = i;
 
-        for(let j = i + 1; j < n; j++){
-            if(array[j] < array[midIndex]){
-                midIndex = j
+        for(let j = i+1; j < n; j++){
+            if(arr[j] < arr[minIndex]){
+                minIndex = j
+            }
+        }
+        if(minIndex !== i){
+            let temp = arr[i]
+            arr[i] = arr[minIndex]
+            arr[minIndex] = temp
+            swaps++
+        }
+    }
+    return arr
+}
+
+console.log("This is the output " + selectionSort2()+ " and this is the number of swaps "+ swaps)
+
+
+
+
+
+let strings = ["apple", "Orange", "banana", "grape", "Pineapple"];
+
+function selectionSortStrings(arr) {
+    let n = arr.length;
+
+    for (let i = 0; i < n - 1; i++) {
+        let minIndex = i;
+
+        for (let j = i + 1; j < n; j++) {
+            // Compare strings using localeCompare
+            if (arr[j].toLowerCase().localeCompare(arr[minIndex].toLowerCase()) < 0) {
+                minIndex = j;
             }
         }
 
-        if (midIndex !== i){
-            let temp = array[i]
-            array[i] = array[midIndex]
-            array[midIndex] = temp
+        if (minIndex !== i) {
+            // Swap the strings
+            let temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
     }
-}
-return array
+
+    return arr;
 }
 
-const SortedArray = SelectionSort(array.slice())
-SelectionSort(console.log(SortedArray))
+console.log(selectionSortStrings(strings));
