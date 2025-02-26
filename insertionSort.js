@@ -9,6 +9,8 @@ for(let i = 1; i < n; i++){
         if(arr[j] > currentValue){
             arr[j + 1] = arr[j]
             insertIndex = j
+        }else{
+            break;
         }
     }
     arr[insertIndex] = currentValue
