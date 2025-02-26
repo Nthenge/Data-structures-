@@ -1,24 +1,20 @@
-const array = [2, 43, 67, 1, 55, 89, 65, 32];
-const InsertionSort = () => {
-    const n = array.length
+const arr = [32,43,65,32,65,12,4,12,97]
+const n = arr.length
 
-    for (let i = 1; i < n; i++){
-        let key = array[i]
-        let j = i - 1
+for(let i = 1; i < n; i++){
+    let currentValue = arr[i]
+    let insertIndex = i
 
-        while(j >= 0 && array[j] > key){
-            array[j + 1] = array[j]
-            j--
+    for(let j = i - 1; j >= 0; j--){
+        if(arr[j] > currentValue){
+            arr[j + 1] = arr[j]
+            insertIndex = j
         }
-        array[j + 1] = key
     }
-    return array;
+    arr[insertIndex] = currentValue
 }
 
-const sortedArray = InsertionSort(array.slice())
-
-console.log('sorted Array: ' + sortedArray)
-
+console.log(arr)
 //space complexity  = O(1)
 // worst case - when the array is not sorted O(n2)
 // best case - when the array is sorted O(n)
