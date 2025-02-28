@@ -7,7 +7,7 @@ const QuickSort2 = (array) => {
         return array
     }
 
-    const pivot = array[n -1]
+    const pivot = array[n - 1]
     const left = []
     const right = []
 
