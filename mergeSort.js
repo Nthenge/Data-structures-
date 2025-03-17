@@ -1,47 +1,36 @@
-const array = [2, 43, 67, 1, 55, 89, 65, 32];
+const arr = [2, 43, 67, 1, 55, 89, 65, 32];
 
-const MergeSort = (array) => {
-    if(array.length <= 1){
-        return array
+function mergeSort(arr){
+    if(arr.length <= 1){
+        return arr
     }
 
-    const middle = Math.floor(array.length / 2);
-    const leftHalf = array.slice(0,middle)
-    const rightHalf = array.slice(middle)
+    const mid = Math.floor(arr.length / 2);
+    const lefthalf = arr.slice(0,mid);
+    const righthalf = arr.slice(mid);
 
-    const sortedLefthalf = MergeSort(leftHalf)
-    const sortedRightHalf = MergeSort(rightHalf)
 
-    return merge(sortedLefthalf, sortedRightHalf)
-}   
+    const sortedLeft = mergeSort(lefthalf)
+    const sortedRight = mergeSort(righthalf)
 
-const merge = (left, right) => {
-    let mergedArray = []
-    let leftIndex = 0
-    let rightIndex = 0
+    return merge(sortedLeft, sortedRight)
+}
 
-    while(leftIndex < left.length && rightIndex < right.length){
-        if(left[leftIndex] < right[rightIndex]){
-            mergedArray.push(left[leftIndex])
-            leftIndex++
+function merge(left, right){
+    let result = []
+    let i = 0, j = 0;
+
+    while(i < left.length && j < right.length){
+        if(left[i] < right[j]){
+            result.push(left[i])
+            i++
         }else{
-            mergedArray.push(right[rightIndex])
-            rightIndex++
+            result.push(right[j])
+            j++
         }
     }
 
-    while(leftIndex < left.length){
-        mergedArray.push(left[leftIndex]);
-        leftIndex++
-    }
-
-    while(rightIndex < right.length){
-        mergedArray.push(right[rightIndex])
-        rightIndex++
-    }
-    return mergedArray
+    return result.concat(left.slice(i)).concat(right.slice(j));
 }
 
-const sortedArray = MergeSort(array);
-
-console.log("Sorted Array:", sortedArray);
+console.log(mergeSort(arr))
