@@ -71,3 +71,16 @@ while(currentnode){
 }
 
 console.log(backwardresult + "null")
+// end of doubly linked list
+
+// circulary linked list, continuation of singly linked list
+node4.next = node1
+currentNode = node1
+let startNode = node1
+
+do{
+    process.stdout.write(currentNode.data + " -> ");
+    currentNode = currentNode.next
+}while(currentNode !== startNode)
+
+console.log(" repeat ")
