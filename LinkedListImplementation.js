@@ -1,3 +1,4 @@
+// singly linked list
 class Node{
     constructor(data){
         this.data = data;
@@ -22,3 +23,51 @@ while(currentNode){
 }
 
 console.log('null')
+// end singly linked list
+
+
+// start of doubly linked list
+class Nod {
+    constructor(data){
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+const node5 =new Nod(5)
+const node6 =new Nod(7)
+const node7 =new Nod(14)
+const node8 =new Nod(24)
+
+node5.next = node6
+
+node6.prev = node5
+node6.next = node7
+
+node7.prev = node6
+node7.next = node8
+
+node8.prev = node7
+
+//forward traversal
+console.log('Traversing forwad');
+let currentnode = node5;
+let forwadReuslt = '';
+while(currentnode){
+    forwadReuslt += currentnode.data + " -> ";
+    currentnode = currentnode.next;
+} 
+
+console.log(forwadReuslt + "null");
+
+//Backward traversal
+console.log("Traversing backward")
+currentnode = node8
+let backwardresult = '';
+while(currentnode){
+    backwardresult += currentnode.data + " -> ";
+    currentnode = currentnode.prev
+}
+
+console.log(backwardresult + "null")
