@@ -6,15 +6,21 @@ class Node{
 }
 
 function traverseAndPrint(head){
+    if(!head) return null;
+
     let currentNode = head;
+    let minValue = head.data
     let result = '';
 
     while(currentNode){
+        if(currentNode.data < minValue){
+            minValue = currentNode.data;
+        }
         result += currentNode.data + " -> ";
         currentNode = currentNode.next
     }
-
-    console.log(result + "null")
+    console.log(result + "null; Minimun value is " + minValue)
+    return minValue
 }
 
 const node1 = new Node(7);
