@@ -22,7 +22,7 @@
 
 // preOrder(root);
 
-//Building a Binaru tree using an array
+//Building a Binary tree using an array
 
 class TreeNode{
     constructor(data){
